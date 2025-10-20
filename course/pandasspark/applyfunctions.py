@@ -1,8 +1,20 @@
 from pyspark.sql import SparkSession
+import pyspark.pandas as ps
 # Must set this env variable to avoid warnings
+
 import os
-os.environ['PYARROW_IGNORE_TIMEZONE'] = '1'
-import pyspark.pandas as ps  # Import pandas-on-Spark
+os.environ["OBJC_DISABLE_INITIALIZE_FORK_SAFETY"] = "YES"   # <- key fix
+os.environ["PYARROW_IGNORE_TIMEZONE"] = "1"                 # you already had this
+
+from pyspark.sql import SparkSession
+spark = (
+    SparkSession.builder
+    .appName("PoS")
+    .config("spark.executorEnv.OBJC_DISABLE_INITIALIZE_FORK_SAFETY", "YES")
+    .config("spark.sql.ansi.enabled", "false")
+    .config("spark.sql.execution.arrow.pyspark.enabled", "false")
+    .getOrCreate()
+)
 
 
 # Initialize Spark Session
@@ -22,8 +34,8 @@ ps_df = ps.DataFrame({
 })
 
 print("Original Pandas-on-Spark DataFrame:")
-print(ps_df)
+print(ps_df.to_spark().show(5))
 
 # transform 
 ps_df['age10years'] = ps_df['age'].transform(lambda x: x + 10)
-print(ps_df.head(5))
+print(ps_df.to_spark().show(5))

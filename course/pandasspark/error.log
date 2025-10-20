@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/Users/vpb/doc/01_ds/git/52_apache_spark/course/pandasspark/pandas-transform-apply.py", line 5, in <module>
+    import pyspark.pandas as ps  # Import pandas-on-Spark
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vpb/.pyenv/versions/spark/lib/python3.11/site-packages/pyspark/pandas/__init__.py", line 34, in <module>
+    require_minimum_pandas_version()
+  File "/Users/vpb/.pyenv/versions/spark/lib/python3.11/site-packages/pyspark/sql/pandas/utils.py", line 27, in require_minimum_pandas_version
+    import pandas
+  File "/Users/vpb/.pyenv/versions/spark/lib/python3.11/site-packages/pandas/__init__.py", line 49, in <module>
+    from pandas.core.api import (
+  File "/Users/vpb/.pyenv/versions/spark/lib/python3.11/site-packages/pandas/core/api.py", line 47, in <module>
+    from pandas.core.groupby import (
+  File "/Users/vpb/.pyenv/versions/spark/lib/python3.11/site-packages/pandas/core/groupby/__init__.py", line 1, in <module>
+    from pandas.core.groupby.generic import (
+  File "/Users/vpb/.pyenv/versions/spark/lib/python3.11/site-packages/pandas/core/groupby/generic.py", line 69, in <module>
+    from pandas.core.groupby import (
+  File "/Users/vpb/.pyenv/versions/spark/lib/python3.11/site-packages/pandas/core/groupby/ops.py", line 25, in <module>
+    import pandas._libs.groupby as libgroupby
+  File "<frozen importlib._bootstrap>", line 405, in parent
+KeyboardInterrupt
