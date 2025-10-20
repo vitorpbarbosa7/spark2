@@ -20,6 +20,8 @@ pandas_df = pd.DataFrame({
     })
 
 # convert pandas dataframe to spark dataframe 
+# this is not a pandas on spark dataframe
+# this is a common spark dataframe that cabe from a pandas dataframe
 spark_df = spark.createDataFrame(pandas_df)
 
 spark_df.printSchema()
@@ -28,6 +30,19 @@ spark_df.printSchema()
 # filter
 filtered_spark_df = spark_df.filter(spark_df.age > 30)
 
-print(filtered_spark_df['age'].max())
-    
+# back to simple pandas 
+converted_pandas_df = filtered_spark_df.toPandas()
+print(converted_pandas_df)
+
+
+# now the real pandas on spark dataframe
+ps_df = ps.DataFrame(pandas_df)
+
+# pandas like operations but in pandas on spark dataframe
+# this still uses the potential from spark distributed system 
+print(ps_df['age'].max())
+
+
+print(ps_df.describe())
+
 
