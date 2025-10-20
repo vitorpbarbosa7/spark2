@@ -25,5 +25,9 @@ spark_df = spark.createDataFrame(pandas_df)
 spark_df.printSchema()
 
 
+# filter
+filtered_spark_df = spark_df.filter(spark_df.age > 30)
+
+print(filtered_spark_df['age'].max())
     
 
