@@ -39,3 +39,19 @@ print(ps_df.to_spark().show(5))
 # transform 
 ps_df['age10years'] = ps_df['age'].transform(lambda x: x + 10)
 print(ps_df.to_spark().show(5))
+
+
+# custom function
+
+def categorize_salary(salary):
+    if salary < 60000:
+        return "low"
+    elif salary < 100000:
+        return "medium"
+    else:
+        return "high"
+
+# apply
+ps_df["salary_category"] = ps_df["salary"].apply(categorize_salary)
+print(ps_df.to_spark().show(5))
+
