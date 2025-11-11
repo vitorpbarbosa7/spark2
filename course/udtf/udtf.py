@@ -79,6 +79,9 @@ df.selectExpr("text", "count_hashtags(text) AS num_hashtags").show()
 # Apply UDTF with a LATERAL JOIN
 print("\nUsing UDTF with LATERAL JOIN:")
 df.createOrReplaceTempView("tweets")
+# LATERAL JOIN - creates more than one row from the select statement
+# text comes with original text not extracted
+# hashtag comes with more than one row 
 spark.sql(
     "SELECT text, hashtag FROM tweets, LATERAL extract_hashtags(text)"
 ).show()

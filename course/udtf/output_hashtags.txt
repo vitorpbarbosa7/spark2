@@ -1,0 +1,35 @@
+
+UDTF Example (Extract Hashtags):
++------------+
+|     hashtag|
++------------+
+|#ApacheSpark|
+|    #BigData|
++------------+
+
+
+UDF Example (Count Hashtags):
++-------------+
+|hashtag_count|
++-------------+
+|            2|
++-------------+
+
++--------------------+------------+
+|                text|num_hashtags|
++--------------------+------------+
+|Learning #AI with...|           2|
+|Explore #DataScience|           1|
+|    No hashtags here|           0|
++--------------------+------------+
+
+
+Using UDTF with LATERAL JOIN:
++--------------------+------------+
+|                text|     hashtag|
++--------------------+------------+
+|Learning #AI with...|         #AI|
+|Learning #AI with...|         #ML|
+|Explore #DataScience|#DataScience|
++--------------------+------------+
+
